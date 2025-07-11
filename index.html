@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fanta World - Официальный магазин</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f0f0f;
+            color: #e5e5e5;
+            overflow-x: hidden;
+        }
+        
+        .fanta-orange {
+            color: #ff6a00;
+        }
+        
+        .bg-fanta-orange {
+            background-color: #ff6a00;
+        }
+        
+        .border-fanta-orange {
+            border-color: #ff6a00;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(255, 106, 0, 0.1), 0 10px 10px -5px rgba(255, 106, 0, 0.04);
+        }
+        
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 106, 0, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+        }
+        
+        .nav-link:hover {
+            color: #ff6a00;
+        }
+        
+        .btn-hover:hover {
+            background-color: #e05d00;
+        }
+    </style>
+</head>
+<body>
+    <!-- Пузырьки фона -->
+    <div class="bubble w-20 h-20 top-1/4 left-10 opacity-30"></div>
+    <div class="bubble w-32 h-32 top-1/3 right-20 opacity-20 animation-delay-2000"></div>
+    <div class="bubble w-16 h-16 bottom-1/4 left-1/4 opacity-25 animation-delay-4000"></div>
+    <div class="bubble w-24 h-24 bottom-1/3 right-1/3 opacity-15 animation-delay-3000"></div>
+    
+    <!-- Навигация -->
+    <nav class="bg-gray-900 bg-opacity-90 backdrop-blur-md fixed w-full z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <img class="h-8 w-auto" src="https://i.postimg.cc/MZFbpqsm/fantalogo.png" alt="Fanta Logo">
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#home" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-white hover:text-orange-300 transition duration-300">Главная</a>
+                            <a href="#products" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-orange-300 transition duration-300">Продукты</a>
+                            <a href="#about" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-orange-300 transition duration-300">О нас</a>
+                            <a href="#contact" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-orange-300 transition duration-300">Контакты</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button class="bg-fanta-orange hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300 btn-hover">
+                            Купить сейчас
+                        </button>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Мобильное меню -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-orange-300 hover:bg-gray-700">Главная</a>
+                <a href="#products" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-orange-300 hover:bg-gray-700">Продукты</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-orange-300 hover:bg-gray-700">О нас</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-orange-300 hover:bg-gray-700">Контакты</a>
+                <button class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white bg-fanta-orange hover:bg-orange-600">
+                    Купить сейчас
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Герой секция -->
+    <section id="home" class="hero-bg pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        <span class="fanta-orange">Fanta</span> - Вкус <br>настоящего <span class="fanta-orange">апельсина</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-lg">
+                        Откройте для себя освежающий вкус Fanta с новыми экзотическими вариантами. Наслаждайтесь каждым глотком!
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="bg-fanta-orange hover:bg-orange-600 text-white px-6 py-3 rounded-lg text-lg font-semibold transition duration-300 btn-hover">
+                            Купить сейчас
+                        </button>
+                        <button class="border-2 border-fanta-orange text-white hover:bg-orange-900 hover:bg-opacity-20 px-6 py-3 rounded-lg text-lg font-semibold transition duration-300">
+                            Узнать больше
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://i.postimg.cc/cCBgqqL2/fantabottle.png" alt="Fanta Bottle" class="w-full max-w-md mx-auto transform hover:scale-105 transition duration-500">
+                    <div class="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-fanta-orange opacity-20 blur-xl"></div>
+                    <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-fanta-orange opacity-15 blur-xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Секция продуктов -->
+    <section id="products" class="py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Наши <span class="fanta-orange">продукты</span></h2>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                    Откройте для себя весь спектр вкусов Fanta. Каждый вариант - это уникальное вкусовое приключение!
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Продукт 1 -->
+                <div class="product-card bg-gray-800 rounded-xl p-6 shadow-lg transition duration-500 hover:shadow-orange-900/20 relative overflow-hidden group">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-fanta-orange opacity-10 group-hover:opacity-20 transition duration-500"></div>
+                    <div class="flex justify-center mb-6">
+                        <img src="https://i.postimg.cc/2yt49R9Y/fantaorange.png" alt="Fanta Orange" class="h-48 object-contain transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Fanta Апельсин</h3>
+                    <p class="text-gray-400 mb-4">Классический освежающий вкус апельсина, который вы знаете и любите.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold fanta-orange">99₽</span>
+                        <button class="bg-fanta-orange hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition duration-300 btn-hover">
+                            В корзину
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Продукт 2 -->
+                <div class="product-card bg-gray-800 rounded-xl p-6 shadow-lg transition duration-500 hover:shadow-orange-900/20 relative overflow-hidden group">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-fanta-orange opacity-10 group-hover:opacity-20 transition duration-500"></div>
+                    <div class="flex justify-center mb-6">
+                        <img src="https://i.postimg.cc/Th8KWRHK/fantagrape.png" alt="Fanta Grape" class="h-48 object-contain transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Fanta Виноград</h3>
+                    <p class="text-gray-400 mb-4">Сочный виноградный вкус с освежающими пузырьками.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold fanta-orange">109₽</span>
+                        <button class="bg-fanta-orange hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition duration-300 btn-hover">
+                            В корзину
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Продукт 3 -->
+                <div class="product-card bg-gray-800 rounded-xl p-6 shadow-lg transition duration-500 hover:shadow-orange-900/20 relative overflow-hidden group">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-fanta-orange opacity-10 group-hover:opacity-20 transition duration-500"></div>
+                    <div class="flex justify-center mb-6">
+                        <img src="https://i.postimg.cc/3rz1Zmsv/fantapineapple.png" alt="Fanta Pineapple" class="h-48 object-contain transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Fanta Ананас</h3>
+                    <p class="text-gray-400 mb-4">Тропический вкус спелого ананаса для настоящих ценителей.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold fanta-orange">119₽</span>
+                        <button class="bg-fanta-orange hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition duration-300 btn-hover">
+                            В корзину
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Продукт 4 -->
+                <div class="product-card bg-gray-800 rounded-xl p-6 shadow-lg transition duration-500 hover:shadow-orange-900/20 relative overflow-hidden group">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-fanta-orange opacity-10 group-hover:opacity-20 transition duration-500"></div>
+                    <div class="flex justify-center mb-6">
+                        <img src="https://i.postimg.cc/kgvy9ZBQ/fantastrawberry.png" alt="Fanta Strawberry" class="h-48 object-contain transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Fanta Клубника</h3>
+                    <p class="text-gray-400 mb-4">Сладкий и сочный вкус спелой клубники в каждом глотке.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold fanta-orange">119₽</span>
+                        <button class="bg-fanta-orange hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition duration-300 btn-hover">
+                            В корзину
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Продукт 5 -->
+                <div class="product-card bg-gray-800 rounded-xl p-6 shadow-lg transition duration-500 hover:shadow-orange-900/20 relative overflow-hidden group">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-fanta-orange opacity-10 group-hover:opacity-20 transition duration-500"></div>
+                    <div class="flex justify-center mb-6">
+                        <img src="https://i.postimg.cc/SR9WP1Bz/fantazeroorange.png" alt="Fanta Zero Orange" class="h-48 object-contain transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Fanta Zero Апельсин</h3>
+                    <p class="text-gray-400 mb-4">Тот же великолепный вкус без сахара и калорий.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold fanta-orange">129₽</span>
+                        <button class="bg-fanta-orange hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition duration-300 btn-hover">
+                            В корзину
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Продукт 6 -->
+                <div class="product-card bg-gray-800 rounded-xl p-6 shadow-lg transition duration-500 hover:shadow-orange-900/20 relative overflow-hidden group">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-fanta-orange opacity-10 group-hover:opacity-20 transition duration-500"></div>
+                    <div class="flex justify-center mb-6">
+                        <img src="https://i.postimg.cc/Wpq6ttdb/fantaexotic.png" alt="Fanta Exotic" class="h-48 object-contain transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Fanta Экзотик</h3>
+                    <p class="text-gray-400 mb-4">Смесь экзотических фруктов для настоящих искателей приключений.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold fanta-orange">139₽</span>
+                        <button class="bg-fanta-orange hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition duration-300 btn-hover">
+                            В корзину
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="border-2 border-fanta-orange text-white hover:bg-orange-900 hover:bg-opacity-20 px-8 py-3 rounded-lg text-lg font-semibold transition duration-300">
+                    Показать все вкусы
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Секция "О нас" -->
+    <section id="about" class="py-16 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <img src="https://i.postimg.cc/Kz9w0jnH/fantapour.png" alt="Fanta Pour" class="w-full rounded-xl shadow-lg">
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">О <span class="fanta-orange">Fanta</span></h2>
+                    <p class="text-gray-300 mb-6">
+                        Fanta - это бренд фруктовых газированных напитков, созданный компанией Coca-Cola. Первая Fanta появилась в 1940 году в Германии и с тех пор завоевала сердца миллионов людей по всему миру.
+                    </p>
+                    <p class="text-gray-300 mb-6">
+                        Сегодня Fanta предлагает широкий ассортимент вкусов, от классического апельсинового до экзотических смесей. Наши напитки созданы для того, чтобы приносить радость и освежение в каждый момент жизни.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center">
+                            <div class="bg-fanta-orange bg-opacity-20 p-3 rounded-full mr-3">
+                                <i class="fas fa-leaf text-fanta-orange text-xl"></i>
+                            </div>
+                            <span class="font-medium">Натуральные ароматы</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-fanta-orange bg-opacity-20 p-3 rounded-full mr-3">
+                                <i class="fas fa-globe text-fanta-orange text-xl"></i>
+                            </div>
+                            <span class="font-medium">Доступно в 190 странах</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-fanta-orange bg-opacity-20 p-3 rounded-full mr-3">
+                                <i class="fas fa-heart text-fanta-orange text-xl"></i>
+                            </div>
+                            <span class="font-medium">Любимый вкус миллионов</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-fanta-orange bg-opacity-20 p-3 rounded-full mr-3">
+                                <i class="fas fa-bolt text-fanta-orange text-xl"></i>
+                            </div>
+                            <span class="font-medium">Мгновенное освежение</span>
+                        </div>
+                    </div>
+                    <button class="bg-fanta-orange hover:bg-orange-600 text-white px-6 py-3 rounded-lg text-lg font-medium transition duration-300 btn-hover">
+                        Узнать историю Fanta
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Секция отзывов -->
+    <section class="py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Что говорят <span class="fanta-orange">наши клиенты</span></h2>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                    Узнайте, почему миллионы людей по всему миру выбирают Fanta
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Отзыв 1 -->
+                <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/32.jpg" alt="User avatar">
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-sm font-medium text-white">Анна К.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        "Обожаю Fanta с детства! Особенно люблю новый вкус Экзотик - это просто взрыв вкусов. Всегда беру с собой на пикники."
+                    </p>
+                </div>
+                
+                <!-- Отзыв 2 -->
+                <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/45.jpg" alt="User avatar">
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-sm font-medium text-white">Дмитрий С.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        "Fanta Zero - мой выбор, когда хочется чего-то вкусного без лишних калорий. Отличная альтернатива обычным сладким напиткам."
+                    </p>
+                </div>
+                
+                <!-- Отзыв 3 -->
+                <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/68.jpg" alt="User avatar">
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-sm font-medium text-white">Елена М.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        "Клубничная Fanta - это нечто! Такой насыщенный вкус, будто ешь настоящую клубнику. Дети просто в восторге, да и я тоже!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Секция контактов -->
+    <section id="contact" class="py-16 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Свяжитесь <span class="fanta-orange">с нами</span></h2>
+                    <p class="text-gray-300 mb-8">
+                        У вас есть вопросы или предложения? Мы всегда рады услышать ваше мнение о наших продуктах. Заполните форму, и мы свяжемся с вами в ближайшее время.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="bg-fanta-orange bg-opacity-20 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-fanta-orange"></i>
+                            </div>
+                            <span>Москва, ул. Тверская, 7</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-fanta-orange bg-opacity-20 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-fanta-orange"></i>
+                            </div>
+                            <span>+7 (495) 123-45-67</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-fanta-orange bg-opacity-20 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-fanta-orange"></i>
+                            </div>
+                            <span>info@fanta-russia.ru</span>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex space-x-4">
+                        <a href="#" class="bg-gray-700 hover:bg-gray-600 p-3 rounded-full transition duration-300">
+                            <i class="fab fa-facebook-f text-white"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-gray-600 p-3 rounded-full transition duration-300">
+                            <i class="fab fa-instagram text-white"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-gray-600 p-3 rounded-full transition duration-300">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-gray-600 p-3 rounded-full transition duration-300">
+                            <i class="fab fa-youtube text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <form class="bg-gray-900 rounded-xl p-6 shadow-lg">
+                        <div class="mb-4">
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Ваше имя</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-fanta-orange text-white transition duration-300" placeholder="Иван Иванов">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-fanta-orange text-white transition duration-300" placeholder="example@mail.com">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Сообщение</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-fanta-orange text-white transition duration-300" placeholder="Ваше сообщение..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-fanta-orange hover:bg-orange-600 text-white px-6 py-3 rounded-lg text-lg font-medium transition duration-300 btn-hover">
+                            Отправить сообщение
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Футер -->
+    <footer class="bg-gray-900 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="flex justify-center md:order-2 space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-fanta-orange transition duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-fanta-orange transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-fanta-orange transition duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-fanta-orange transition duration-300">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                <div class="mt-8 md:mt-0 md:order-1">
+                    <p class="text-center text-base text-gray-400">
+                        &copy; 2023 Fanta World. Все права защищены.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Кнопка "Наверх" -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-fanta-orange text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script>
+        // Мобильное меню
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Скрываем мобильное меню при клике на ссылку
+                    mobileMenu.classList.add('hidden');
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Кнопка "Наверх"
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Анимация пузырьков
+        const bubbles = document.querySelectorAll('.bubble');
+        
+        bubbles.forEach((bubble, index) => {
+            // Устанавливаем случайные задержки для анимации
+            bubble.style.animationDelay = `${index * 1000}ms`;
+            
+            // Случайное позиционирование для мобильных устройств
+            if (window.innerWidth < 768) {
+                bubble.style.left = `${Math.random() * 80}%`;
+                bubble.style.top = `${Math.random() * 80}%`;
+            }
+        });
+        
+        // Анимация при наведении на кнопки "В корзину"
+        const addToCartButtons = document.querySelectorAll('.product-card button');
+        
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Анимация добавления в корзину
+                this.innerHTML = '<i class="fas fa-check mr-2"></i>Добавлено';
+                this.classList.remove('bg-fanta-orange', 'hover:bg-orange-600');
+                this.classList.add('bg-green-500', 'hover:bg-green-600');
+                
+                // Возвращаем исходное состояние через 2 секунды
+                setTimeout(() => {
+                    this.innerHTML = 'В корзину';
+                    this.classList.remove('bg-green-500', 'hover:bg-green-600');
+                    this.classList.add('bg-fanta-orange', 'hover:bg-orange-600');
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

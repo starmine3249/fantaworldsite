@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0f0f0f;
+    color: #e5e5e5;
+    overflow-x: hidden;
+}
+
+.fanta-orange {
+    color: #ff6a00;
+}
+
+.bg-fanta-orange {
+    background-color: #ff6a00;
+}
+
+.border-fanta-orange {
+    border-color: #ff6a00;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(255, 106, 0, 0.1), 0 10px 10px -5px rgba(255, 106, 0, 0.04);
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 106, 0, 0.1);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+.hero-bg {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+}
+
+.nav-link:hover {
+    color: #ff6a00;
+}
+
+.btn-hover:hover {
+    background-color: #e05d00;
+}
